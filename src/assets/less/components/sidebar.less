@@ -1,0 +1,26 @@
+.sidebar{
+    .bg(@sidebar-bg);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    margin-top: @header-nav-height;
+    width: 20%;
+    max-width: @nav-large-width;
+    min-width: @nav-min-width;
+    padding: 38px 18px 38px 12px;
+    z-index: 1;
+
+    &__link{
+      display: inline-flex;
+      gap: 24px;
+      color: @title-primary;
+      padding: 16px 40px;
+      margin-bottom: 16px;
+
+      &.active{
+        .bg(#E2E5ED);
+        border-radius: 10px;
+        border: 1px solid #0DABD838;
+      }
+    }
+}
