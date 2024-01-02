@@ -1,6 +1,6 @@
 .header{
   height: @header-nav-height;
-  border-bottom: 1px solid #707070;
+  border-bottom: 1px solid rgba(112, 112, 112, .5);
   &__container{
     display: grid;
     grid-template-columns: .6fr 2.5fr 1fr;
@@ -84,6 +84,11 @@
       height: 44px;
       .bg(@title-primary);
       border-radius: 12px;
+      margin-right: 12px;
+    }
+
+    &-name{
+      font-weight: 600;
     }
 
     .divider{

@@ -33,8 +33,8 @@
 
           </div>
           <div>
-            <p>Cody Fisher</p>
-            <p>CodyFisher@gmail.com</p>
+            <p class="header__profile-name text-md text--black">Cody Fisher</p>
+            <p class="header__profile-email text-xs text--link">CodyFisher@gmail.com</p>
           </div>
         </div>
       </div>
