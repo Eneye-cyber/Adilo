@@ -2,9 +2,12 @@
   border: none;
   padding: 11px 22px;
   display: inline-flex;
-  gap: 12px;
+  gap: 6px;
   border-radius: 28px;
-
+  cursor: pointer;
+  &-icon{
+    cursor: pointer;
+  }
   &-alert{
     .bg(@error);
     color: @white;
@@ -23,9 +26,6 @@
     border: 1px solid #637C8E;
   }
 
-  & .rotate{
-    transform: rotateZ(90deg);
-  }
   & .rec{
     width: 20px;
     height: 20px;
