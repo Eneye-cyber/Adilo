@@ -100,4 +100,32 @@
       border-radius: 4px;
     }
   }
+
+  .relative{
+    position: relative;
+  }
+
+  .dropdown{
+    .bg(@white);
+    position: absolute;
+    box-shadow: 0px 3px 24px #0000001A;
+    border: 1px solid #E2E5ED;
+    border-radius: 8px;
+    width: 220px;
+    z-index: 4;
+    top: calc(@header-nav-height - 20px);
+    left: -40px;
+
+    &__children{
+      padding: 19px 26px;
+      letter-spacing: 0px;
+      border-top: 1px solid rgba(112, 112, 112, .5);
+
+      &.active{
+        color: @primary;
+        font-weight: 600;
+        border-top: none;
+      }
+    }
+  }
 }

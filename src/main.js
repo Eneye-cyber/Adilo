@@ -8,7 +8,11 @@ const routes = [
   { 
     path: '/', 
     component: () => import('./pages/RecordingsPage.vue')
-    },
+  },
+  { 
+    path: '/record', 
+    component: () => import('./pages/Record.vue')
+  }
 ]
 
 const router = createRouter({

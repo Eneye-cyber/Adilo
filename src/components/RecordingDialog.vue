@@ -1,8 +1,10 @@
 <script setup>
+import { useRouter } from 'vue-router'
   defineProps({
     active: Boolean
   })
-
+  const router = useRouter();
+  
   const emit = defineEmits(['close'])
 
   function closeDialog() {
@@ -51,7 +53,7 @@
           </div>
         </section>
         <div class="w-full flex centered">
-          <button class="btn centered btn-primary">Start Recording </button>
+          <button @click="router.push('/record')" class="btn centered btn-primary">Start Recording </button>
           
         </div>
       </form>

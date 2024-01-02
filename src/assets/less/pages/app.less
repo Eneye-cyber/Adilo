@@ -79,3 +79,46 @@ table.recordings{
     }
   }
 }
+
+.record{
+  position: fixed;
+  top: @header-nav-height;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent linear-gradient(117deg, rgba(13, 171, 216, 0.4) 0%, rgba(234, 250, 255, 0.4) 0%, rgba(211, 245, 254, 0.4) 100%);
+  overflow-y: auto;
+
+  &__container{
+    width: 965px;
+    margin: 40px auto 52px;
+  }
+
+  &__icon{
+    width: 16px;
+    height: 16px;
+    border: 1px solid @error;
+    border-radius: 50%;
+    .bg();
+    margin-right: 8px;
+
+    & > div {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      .bg(@error);
+    }
+  }
+
+  &__player{
+    width: 965px;
+    height: 518px;
+    border-radius: 8px;
+    .bg(@title-primary);
+    margin-top: 12px;
+  }
+
+  &__button{
+    margin-bottom: 36px;
+  }
+}

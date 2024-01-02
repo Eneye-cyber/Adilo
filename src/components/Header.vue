@@ -1,5 +1,13 @@
 <script setup>
+import { ref } from 'vue';
+import { useRouter } from 'vue-router'
 
+const show = ref(false)
+const router = useRouter()
+function goto(arg) {
+  show.value = false
+  router.push(arg)
+}
 </script>
 
 <template>
@@ -12,21 +20,26 @@
 
       <nav class="header__nav flex">
         <ul class="flex item-center w-full">
-          <li><a class="nav-link" href="#">Projects</a></li>
-          <li>
-            <a class="nav-link item-center active" href="#">Tools & App 
+          <li><router-link to="/" class="nav-link" >Projects</router-link></li>
+          <li class="relative">
+            <a @click.prevent="show = !show" class="nav-link item-center active">Tools & App 
               <span class="material-symbols-outlined">expand_more</span>
             </a>
+            <div v-if="show" class="dropdown">
+              <div @click="(e) => goto('/')" class="dropdown__children text-md active">Snapbyte Recorder</div>
+              <div @click="(e) => goto('/')" class="dropdown__children text-md">AudioBounce</div>
+              <div @click="(e) => goto('/')" class="dropdown__children text-md">Sugar Voice</div>
+            </div>
           </li>
-          <li><a class="nav-link" href="#">Channels</a></li>
-          <li><a class="nav-link" href="#">Contacts</a></li>
-          <li><a class="nav-link" href="#">Analytics</a></li>
-          <li><a class="nav-link" href="#">Settings</a></li>
+          <li><router-link to="/" class="nav-link" >Channels</router-link></li>
+          <li><router-link to="/" class="nav-link" >Contacts</router-link></li>
+          <li><router-link to="/" class="nav-link" >Analytics</router-link></li>
+          <li><router-link to="/" class="nav-link" >Settings</router-link></li>
         </ul>
       </nav>
 
       <div class="header__profile flex item-center">
-        <a class="header__profile-link text-lg" href="#">Help</a>
+        <router-link to="/" class="header__profile-link text-lg" >Help</router-link>
         <div class="divider"></div>
         <div class="flex item-center">
           <div class="header__profile-image">

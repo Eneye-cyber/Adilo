@@ -1,11 +1,13 @@
 <script setup>
 import RecordingDialog from '.././components/RecordingDialog.vue';
+import Sidebar from '.././components/Sidebar.vue'
 import { ref } from 'vue';
 let dialogActive = ref(false)
 
 </script>
 
 <template>
+  <Sidebar />
   <RecordingDialog @close="dialogActive = false" v-if="dialogActive" />
   <main class="main">
     <article>
