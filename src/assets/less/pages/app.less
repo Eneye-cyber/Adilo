@@ -1,12 +1,4 @@
-// main{
-//   // width: calc(100% - @nav-large-width);
-//   min-width: 320px;
-//   margin-left: @nav-large-width;
-//   min-height: 420px;
-//   height: 100vh;
-//   padding: @base-space * 7 @base-space * 6;
-//   position: relative;
-// }
+
 section{
   width: 90%;
   margin: 24px auto 0;
@@ -26,6 +18,28 @@ section{
 
     &__buttons{
       gap: 4px;
+    }
+  }
+
+  .empty{
+    &__state{
+      width: 1018px;
+      height: 563px;
+      border: 1px dashed #A3BAC6;
+      border-radius: 38px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      &-text{
+        margin: 46px auto 36.5px;
+        text-align: center;
+        & > p{
+          padding-top: 16px;
+          width: 420px
+
+        }
+      }
     }
   }
 }

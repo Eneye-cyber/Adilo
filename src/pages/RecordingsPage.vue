@@ -1,9 +1,34 @@
 <script setup>
 import RecordingDialog from '.././components/RecordingDialog.vue';
 import Sidebar from '.././components/Sidebar.vue'
+import videoData from './../assets/sample.json'
 import { ref } from 'vue';
 let dialogActive = ref(false)
 
+const data = ref([])
+const loading = ref(false)
+
+function resolveAfter2Seconds(x) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(x);
+    }, 2000);
+  });
+}
+
+async function fetchData () {
+  loading.value = true
+  try {
+    const response = await resolveAfter2Seconds(videoData)
+    console.log(response)
+    data.value = response
+  } catch (error) {
+    alert('Something Went Wrong')
+    console.log(error)
+  } finally{
+    loading.value = false
+  }
+}
 </script>
 
 <template>
@@ -51,7 +76,7 @@ let dialogActive = ref(false)
       </section>
 
       <section>
-        <table class="recordings">
+        <table v-if="data.length" class="recordings">
           <tr>
             <th>Recordings</th>
             <th>Title</th>
@@ -60,39 +85,45 @@ let dialogActive = ref(false)
             <th>Last Modified</th>
             <th></th>
           </tr>
-          <tr>
+          <tr v-for="(item, i) in data" :key="i">
             <td>
               <div class="table__video">
-                <span>00:14</span>
+                <img :src="item.video" width="120px" height="40px" :alt="item.title">
+                <span>{{item.duration}}</span>
               </div>
             </td>
             <td>
-              <h4 class="text-body text--title">Getting it right the first time</h4>
-              <p class="text-sm text--primary">The Video description is shown here if the user has added it.</p>
+              <h4 class="text-body text--title">{{item.title}}</h4>
+              <p class="text-sm text--primary">{{item.description}}</p>
             </td>
-            <td class="text-md text--title">324</td>
-            <td class="text-md text--title">923KB</td>
-            <td class="text-md text--title">3 months ago</td>
-          </tr>
-
-          <tr>
-            <td>
-              <div class="table__video">
-                <span>00:14</span>
-              </div>
-            </td>
-            <td>
-              <h4 class="text-body text--title">Getting it right the first time</h4>
-              <p class="text-sm text--primary">The Video description is shown here if the user has added it.</p>
-            </td>
-            <td class="text-md text--title">324</td>
-            <td class="text-md text--title">923KB</td>
-            <td class="text-md text--title">3 months ago</td>
+            <td class="text-md text--title">{{item.views}}</td>
+            <td class="text-md text--title">{{item.size}}</td>
+            <td class="text-md text--title">{{item.date}}</td>
             <td>
               <span class="material-symbols-outlined mt-2">more_horiz</span>
             </td>
           </tr>
         </table>
+        
+        <div v-else class="empty__state">
+          <div class="empty__state-text">
+            <h2>Say hello to the world!</h2>
+            <p class="text--link text-sm">Record your first video/audio and share it what your team, friends, followers and customers.</p>
+          </div>
+
+            <div class="flex centered">
+              <button :class="[loading ? 'btn-disabled' : '']" class="btn centered btn-alert" @click="dialogActive = true">
+                <div class="rec centered flex">
+                  REC
+                </div>
+                Start Recording
+              </button>
+              <button :class="[loading ? 'btn-disabled' : '']" @click="fetchData" class="btn centered btn-primary">
+                <span class="material-symbols-outlined">videocam</span>
+                New Request
+              </button>
+            </div>
+        </div>
       </section>
     </article>
   </main>
