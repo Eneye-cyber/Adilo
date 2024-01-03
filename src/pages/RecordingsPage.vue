@@ -60,12 +60,12 @@ async function fetchData () {
               <span class="material-symbols-outlined"> expand_more </span>
             </button>
 
-            <button class="btn centered btn-primary">
+            <button :class="[loading ? 'btn-disabled' : '']"  @click="fetchData" class="btn centered btn-primary">
               <span class="material-symbols-outlined">videocam</span>
               New Request
             </button>
 
-            <button class="btn centered btn-alert" @click="dialogActive = true">
+            <button :class="[loading ? 'btn-disabled' : '']" class="btn centered btn-alert" @click="dialogActive = true">
               <div class="rec centered flex">
                 REC
               </div>
